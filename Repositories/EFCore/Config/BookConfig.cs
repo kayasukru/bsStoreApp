@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using WebAPI.Models;
 
-namespace WebAPI.Repositories.Config
+namespace Repositories.EFCore.Config
 {
     public class BookConfig : IEntityTypeConfiguration<Book>
     {

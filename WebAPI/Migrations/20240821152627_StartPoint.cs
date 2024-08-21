@@ -2,10 +2,12 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace WebAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class startPoint : Migration
+    public partial class StartPoint : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,6 +24,16 @@ namespace WebAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Books", x => x.Id);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "Id", "Price", "Title" },
+                values: new object[,]
+                {
+                    { 1, 100m, "Hacıvat" },
+                    { 2, 200m, "Karagöz" },
+                    { 3, 300m, "Hacıvat ve Karagöz" }
                 });
         }
 

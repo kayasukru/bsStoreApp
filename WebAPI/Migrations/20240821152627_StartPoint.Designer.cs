@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebAPI.Repositories;
+using Repositories.EFCore;
 
 #nullable disable
 
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240812111916_startPoint")]
-    partial class startPoint
+    [Migration("20240821152627_StartPoint")]
+    partial class StartPoint
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace WebAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("WebAPI.Models.Book", b =>
+            modelBuilder.Entity("Entities.Models.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,6 +42,26 @@ namespace WebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Price = 100m,
+                            Title = "Hacıvat"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Price = 200m,
+                            Title = "Karagöz"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Price = 300m,
+                            Title = "Hacıvat ve Karagöz"
+                        });
                 });
 #pragma warning restore 612, 618
         }
